@@ -1,9 +1,10 @@
 #include "GameRenderer.h"
 #include "Game.h"
+#include "RenderContext.h"
 #include "ofApp.h"
 
 GameRenderer::GameRenderer()
-	: m_pGame(NULL)
+	: m_game(NULL)
 {
 }
 
@@ -14,19 +15,19 @@ GameRenderer::~GameRenderer()
 
 void GameRenderer::Render()
 {
-	if (!m_pGame) { return; }
+	if (!m_game || !m_context) { return; }
 
 	ofClear(ofColor::antiqueWhite);
 
-	const auto& panel = m_pGame->getPanel();
+	const auto& panel = m_game->getPanel();
 
-	const int pw = 10;
-	const int ph = 10;
+	const int pw = m_context->panelW();
+	const int ph = m_context->panelH();
 
 	for (auto it = panel.begin(); it != panel.end(); ++it)
 	{
-		int left = pw * it.x;
-		int top = pw * it.y;
+		int left = pw * it.x - m_context->getPaddingL();
+		int top = ph * it.y - m_context->getPaddingT();
 
 		switch (*it)
 		{

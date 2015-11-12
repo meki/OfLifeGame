@@ -97,7 +97,7 @@
       <WarningLevel>Level3</WarningLevel>
       <AdditionalIncludeDirectories>$(DROPBOX_DIR)\User\lib\myfile;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxSvg\src;..\..\..\addons\ofxSvg\libs\svgTiny\src;..\..\..\addons\ofxVectorGraphics\src;..\..\..\addons\ofxVectorGraphics\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
-      <DisableSpecificWarnings>4819;4244;4996;4305</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4819;4244;4996;4305;4267</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -119,7 +119,7 @@
       <AdditionalIncludeDirectories>$(DROPBOX_DIR)\User\lib\myfile;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxSvg\src;..\..\..\addons\ofxSvg\libs\svgTiny\src;..\..\..\addons\ofxVectorGraphics\src;..\..\..\addons\ofxVectorGraphics\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>4819;4244;4996;4305</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4819;4244;4996;4305;4267</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -140,7 +140,7 @@
       <AdditionalIncludeDirectories>$(DROPBOX_DIR)\User\lib\myfile;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxSvg\src;..\..\..\addons\ofxSvg\libs\svgTiny\src;..\..\..\addons\ofxVectorGraphics\src;..\..\..\addons\ofxVectorGraphics\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>4819;4244;4996;4305</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4819;4244;4996;4305;4267</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -163,7 +163,7 @@
       <WarningLevel>Level3</WarningLevel>
       <AdditionalIncludeDirectories>$(DROPBOX_DIR)\User\lib\myfile;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxSvg\src;..\..\..\addons\ofxSvg\libs\svgTiny\src;..\..\..\addons\ofxVectorGraphics\src;..\..\..\addons\ofxVectorGraphics\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
-      <DisableSpecificWarnings>4819;4244;4996;4305</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4819;4244;4996;4305;4267</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -198,6 +198,7 @@
     <ClCompile Include="src\GameRenderer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\RenderContext.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
@@ -216,8 +217,10 @@
     <ClInclude Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS_Types.hpp" />
     <ClInclude Include="..\..\..\addons\ofxVectorGraphics\src\ofxVectorGraphics.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\GameController.h" />
     <ClInclude Include="src\GameRenderer.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\RenderContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

@@ -4,6 +4,8 @@
 
 class Game;
 class GameRenderer;
+class GameController;
+class RenderContext;
 
 class ofApp : public ofBaseApp{
 
@@ -24,12 +26,16 @@ public:
 	void mouseEntered(int x, int y);
 	void mouseExited(int x, int y);
 	void windowResized(int w, int h);
+	void mouseScrolled(int x, int y, float scrollX, float scrollY) override;
+
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 		
 private:
 	Game* m_game;
 	GameRenderer* m_renderer;
+	GameController* m_controller;
+	RenderContext* m_context;
 };
 
 template <typename T>

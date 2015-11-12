@@ -58,6 +58,9 @@
     <ClCompile Include="src\GameRenderer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\RenderContext.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -150,6 +153,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\GameRenderer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderContext.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameController.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

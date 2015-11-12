@@ -1,6 +1,10 @@
 #include "Game.h"
 #include <cassert>
 
+// debug
+#include <iostream>
+using namespace std;
+
 Game::Game(int w, int h)
 	: m_panel(w, h),
 	m_generation(1)
@@ -15,13 +19,7 @@ Game::~Game()
 
 void Game::step()
 {
-	auto foreachNeighbor = [&](int cx, int cy, auto action) {
-		for (int y = cy - 1; y <= cy + 1; ++y) {
-			for (int x = cx - 1; x <= cx + 1; ++x) {
-				action();
-			}
-		}
-	};
+	int liveCount = 0;
 
 	for (auto it = m_panel.begin(); it != m_panel.end(); ++it)
 	{
@@ -35,6 +33,11 @@ void Game::step()
 		for (int y = cy - 1; y <= cy + 1; ++y) {
 			for (int x = cx - 1; x <= cx + 1; ++x) {
 				if (x == cx && y == cy)
+				{
+					continue;
+				}
+
+				if (x < 0 || x >= (int)m_panel.width || y < 0 || y >= (int)m_panel.height)
 				{
 					continue;
 				}
@@ -83,5 +86,21 @@ void Game::step()
 
 			}
 		}
+
+		if (*it == Alive) { ++liveCount; }
 	}
+
+	++m_generation;
+
+	cout << "generation: " << m_generation << ", lives: " << liveCount << endl;
+}
+
+void Game::createLive(int x, int y)
+{
+	m_panel(x, y) = Alive;
+}
+
+void Game::kill(int x, int y)
+{
+	m_panel(x, y) = Empty;
 }
