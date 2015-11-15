@@ -55,11 +55,11 @@ public:
 			break;
 		case Scenario::Stage2:
 		{
-			static int animationCount = 0;
-			if (IsEverySeconds(0.1) && animationCount < 20 )
-			{
-				m_context->zoomIncrement(0, 0, -0.1);
-			}
+// 			static int animationCount = 0;
+// 			if (IsEverySeconds(0.1) && animationCount < 20 )
+// 			{
+// 				m_context->zoomIncrement(0, 0, -0.1);
+// 			}
 
 
 			if (IsEverySeconds(0.2))
@@ -96,13 +96,27 @@ public:
 			break;
 		case Scenario::Stage1:
 		{
-			if (getElapsedSec() > 1)
+			if (getElapsedSec() > 15)
+			//if (getElapsedSec() > 1)
 			{
 				m_state = Stage2;
+				m_context->setZoomRate(20.0);
+				m_context->setPaddingL(5600);
+				m_context->setPaddingT(3200);
 			}
 		}
 			break;
 		case Scenario::Stage2:
+		{
+			if (getElapsedSec() > 45)
+			//if (getElapsedSec() > 1.5)
+			{
+				m_state = Stage3;
+				m_context->setZoomRate(15.0);
+				m_context->setPaddingL(4000);
+				m_context->setPaddingT(2300);
+			}
+		}
 			break;
 		case Scenario::Stage3:
 			break;
