@@ -7,47 +7,41 @@ public:
 		: panelPhysW(pw),
 		panelPhysH(ph),
 		globalPhysW(pw * w),
-		globalPhysH(ph * h)
+		globalPhysH(ph * h),
+		MIN_ZOOM_RATE(10.0 / pw)
 	{
-		zoomRate = 1.0;
+		zoomRate = 10.0 / pw;
 		paddingLeft = 0;
 		paddingTop = 0;
 	}
 
-	float globalW() const { return globalPhysW * zoomRate; }
-	float globalH() const { return globalPhysH * zoomRate; }
-	float panelW() const { return panelPhysW * zoomRate; }
-	float panelH() const { return panelPhysH * zoomRate; }
-	void zoomIncrement(float screenX, float screenY, float deltaZoom)
-	{
-		float newZoom = zoomRate + deltaZoom;
-		float relativeZoom = newZoom / zoomRate;
+	double globalW() const { return globalPhysW * zoomRate; }
+	double globalH() const { return globalPhysH * zoomRate; }
+	double panelW() const { return panelPhysW * zoomRate; }
+	double panelH() const { return panelPhysH * zoomRate; }
+	void zoomIncrement(double screenX, double screenY, double deltaZoom);
 
-		float newPaddingLeft = (paddingLeft * relativeZoom) + (screenX * relativeZoom) - screenX;
-		float newPaddingTop = (paddingTop * relativeZoom) + (screenY * relativeZoom) - screenY;
-
-		zoomRate = newZoom;
-		paddingLeft = newPaddingLeft;
-		paddingTop = newPaddingTop;
-	}
-
-	float screenToPhysX(float xScreen) const {
+	double screenToPhysX(double xScreen) const {
 		return (paddingLeft + xScreen) / zoomRate;
 	}
 
-	float screenToPhysY(float yScreen) const {
+	double screenToPhysY(double yScreen) const {
 		return (paddingTop + yScreen) / zoomRate;
 	}
 
-	float getPaddingL() const { return paddingLeft; }
-	float getPaddingT() const { return paddingTop; }
+	void setPaddingL(double value) { paddingLeft = value; }
+	void setPaddingT(double value) { paddingTop = value; }
+
+	double getPaddingL() const { return paddingLeft; }
+	double getPaddingT() const { return paddingTop; }
 
 private:
-	const float panelPhysW;
-	const float panelPhysH;
-	const float globalPhysW;
-	const float globalPhysH;
-	float zoomRate;
-	float paddingLeft;
-	float paddingTop;
+	const double panelPhysW;
+	const double panelPhysH;
+	const double globalPhysW;
+	const double globalPhysH;
+	const double MIN_ZOOM_RATE;
+	double zoomRate;
+	double paddingLeft;
+	double paddingTop;
 };

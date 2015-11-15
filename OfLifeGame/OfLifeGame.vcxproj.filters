@@ -61,6 +61,7 @@
     <ClCompile Include="src\RenderContext.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

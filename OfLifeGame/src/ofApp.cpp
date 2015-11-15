@@ -18,12 +18,14 @@ ofApp::~ofApp()
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-	const int panelW = 10;
-	const int panelH = 10;
-	const int gridW = 160;
-	const int gridH = 90;
+	const int panelW = 2;
+	const int panelH = 2;
+	const int gridW = panelW * 160;
+	const int gridH = panelH * 90;
 
 	m_game = new Game(gridW, gridH);
+	m_game->addAcorn((gridW / 2) - 3, (gridH / 2) - 3);
+
 	m_context = new RenderContext(panelW, panelH, gridW, gridH);
 
 	m_renderer = new GameRenderer();
@@ -31,8 +33,8 @@ void ofApp::setup(){
 	m_renderer->Attach(m_context);
 
 	m_controller = new GameController();
-	m_controller->Attach(m_game);
-	m_controller->Attach(m_context);
+	m_controller->attach(m_game);
+	m_controller->attach(m_context);
 }
 
 using MouseButton = int;
@@ -68,19 +70,37 @@ void ofApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
 
+	switch (button)
+	{
+	case MouseL:
+	{
+		m_controller->addLife(x, y);
+	}
+	break;
+
+	case MouseR:
+	{
+		m_context->setPaddingL(x);
+		m_context->setPaddingT(y);
+	}
+	break;
+
+	default:
+		break;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
 	
 	
-	// cout << __FUNCTION__ << ", " << x << ", " << y << ": " << button << endl;
+	cout << __FUNCTION__ << ", " << x << ", " << y << ": " << button << endl;
 
 	switch (button)
 	{
 	case MouseL:
 	{
-
+		m_controller->toggleLife(x, y);
 	}
 		break;
 
