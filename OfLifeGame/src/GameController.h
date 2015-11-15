@@ -14,6 +14,8 @@ public:
 	void addLife(int screenX, int screenY);
 	void toggleLife(int screenX, int screenY);
 
+	void step();
+
 	Point screenToGame(int screenX, int screenY) const;
 
 private:

@@ -25,16 +25,6 @@ void GameRenderer::Render()
 	const int pw = m_context->panelW();
 	const int ph = m_context->panelH();
 
-// 	for (auto it = panel.begin(); it != panel.end(); ++it)
-// 	{
-// 		int left = pw * it.x - m_context->getPaddingL();
-// 		int top = ph * it.y - m_context->getPaddingT();
-// 
-// 		ofNoFill();
-// 		ofSetColor(ofColor::gray);
-// 		ofDrawRectangle(left, top, pw, ph);
-// 	}
-
 	static int c = 0;
 	++c;
 	c = c % 256;
@@ -63,8 +53,8 @@ void GameRenderer::Render()
 		case Alive:
 		{
 			ofFill();
-			//ofSetColor(ofColor::deepPink);
-			ofSetColor(ofColor::fromHsb(c, 255, 255));
+			ofSetColor(ofColor::deepPink);
+			//ofSetColor(ofColor::fromHsb(c, 255, 255));
 			ofDrawRectangle(left, top, pw, ph);
 		}
 			break;

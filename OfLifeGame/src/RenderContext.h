@@ -3,11 +3,13 @@
 class RenderContext
 {
 public:
-	RenderContext(int pw, int ph, int w, int h)
+	RenderContext(int pw, int ph, int w, int h, int winW, int winH)
 		: panelPhysW(pw),
 		panelPhysH(ph),
 		globalPhysW(pw * w),
 		globalPhysH(ph * h),
+		windowW(winW),
+		windowH(winH),
 		MIN_ZOOM_RATE(10.0 / pw)
 	{
 		zoomRate = 10.0 / pw;
@@ -19,6 +21,8 @@ public:
 	double globalH() const { return globalPhysH * zoomRate; }
 	double panelW() const { return panelPhysW * zoomRate; }
 	double panelH() const { return panelPhysH * zoomRate; }
+	
+	void setZoomRate(double rate) { zoomRate = rate; }
 	void zoomIncrement(double screenX, double screenY, double deltaZoom);
 
 	double screenToPhysX(double xScreen) const {
@@ -40,6 +44,8 @@ private:
 	const double panelPhysH;
 	const double globalPhysW;
 	const double globalPhysH;
+	const double windowW;
+	const double windowH;
 	const double MIN_ZOOM_RATE;
 	double zoomRate;
 	double paddingLeft;

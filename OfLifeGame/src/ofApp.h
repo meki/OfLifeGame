@@ -6,6 +6,7 @@ class Game;
 class GameRenderer;
 class GameController;
 class RenderContext;
+class Scenario;
 
 class ofApp : public ofBaseApp{
 
@@ -36,6 +37,7 @@ private:
 	GameRenderer* m_renderer;
 	GameController* m_controller;
 	RenderContext* m_context;
+	Scenario* m_scenario;
 };
 
 template <typename T>

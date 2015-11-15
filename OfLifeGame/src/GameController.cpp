@@ -18,6 +18,11 @@ void GameController::toggleLife(int screenX, int screenY)
 	m_game->toggleLife(p.x, p.y);
 }
 
+void GameController::step()
+{
+	m_game->step();
+}
+
 Point GameController::screenToGame(int x, int y) const
 {
 	Point out;
