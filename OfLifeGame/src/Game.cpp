@@ -10,7 +10,7 @@ Game::Game(int w, int h)
 {
 	for (auto& v : m_panel) { v = Empty; }
 
-	m_panelOld = m_panel;
+	m_panelPrev = m_panel;
 }
 
 
@@ -27,9 +27,9 @@ void Game::step()
 {
 	int liveCount = 0;
 
-	m_panelOld = m_panel;
+	m_panelPrev = m_panel;
 
-	const Panel& check = m_panelOld;
+	const Panel& check = m_panelPrev;
 
 	for (auto it = m_panel.begin(); it != m_panel.end(); ++it)
 	{

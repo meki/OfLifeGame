@@ -22,7 +22,7 @@ public:
 	void kill(int x, int y);
 
 	const Panel& getPanel() const { return m_panel; }
-	const Panel& getOldPanel() const { return m_panelOld; }
+	const Panel& getOldPanel() const { return m_panelPrev; }
 
 	void addAcorn(int x, int y);
 
@@ -30,7 +30,7 @@ private:
 
 	Game(const Game&) = delete;
 	Game& operator=(const Game&) = delete;
-	Panel m_panelOld;
+	Panel m_panelPrev;
 	Panel m_panel;
 	int m_generation;
 };

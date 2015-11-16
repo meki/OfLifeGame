@@ -11,6 +11,7 @@ class GameRenderer
 		Panel()
 		{
 			isAccessed = false;
+			count = 0;
 		}
 
 		bool isAccessed;
@@ -21,7 +22,7 @@ public:
 	GameRenderer();
 	~GameRenderer();
 
-	void Attach(Game* ptr) { m_game = ptr; }
+	void Attach(Game* ptr);
 
 	void Attach(RenderContext* ptr) { m_context = ptr; }
 

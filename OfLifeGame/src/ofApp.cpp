@@ -36,6 +36,26 @@ public:
 
 	void update()
 	{
+		const double ev1 = 2;
+		const double ev2 = 0.8;
+		const double ev3 = 0.4;
+		const double ev4 = 0.2;
+		const double ev5 = 0.1;
+
+// 		const double ev1 = 0.5;
+// 		const double ev2 = 0.2;
+// 		const double ev3 = 0.1;
+// 		const double ev4 = 0.05;
+// 		const double ev5 = 0.025;
+
+		const double t1 = ev1 * 30;
+		const double t2 = t1 + ev2 * 100;
+		const double t3 = t2 + ev3 * 200;
+		const double t4 = 60;
+		const double t5 = 60;
+		const double t6 = 60;
+
+
 		switch (m_state)
 		{
 		case Scenario::Initial:
@@ -47,7 +67,7 @@ public:
 			break;
 		case Scenario::Stage1:
 		{
-			if (IsEverySeconds(0.5))
+			if (IsEverySeconds(ev1))
 			{
 				m_controller->step();
 			}
@@ -55,22 +75,60 @@ public:
 			break;
 		case Scenario::Stage2:
 		{
-// 			static int animationCount = 0;
-// 			if (IsEverySeconds(0.1) && animationCount < 20 )
-// 			{
-// 				m_context->zoomIncrement(0, 0, -0.1);
-// 			}
-
-
-			if (IsEverySeconds(0.2))
+			static int start = getElapsedSec();
+			if (getElapsedSec() - start < 3)
 			{
-				m_controller->step();
+				if (IsEverySeconds(ev1))
+				{
+					m_controller->step();
+				}
+			}
+			else
+			{
+				if (IsEverySeconds(ev2))
+				{
+					m_controller->step();
+				}
 			}
 		}
 			break;
 		case Scenario::Stage3:
+		{
+			static int start = getElapsedSec();
+			if (getElapsedSec() - start < 3)
+			{
+				if (IsEverySeconds(ev2))
+				{
+					m_controller->step();
+				}
+			}
+			else
+			{
+				if (IsEverySeconds(ev3))
+				{
+					m_controller->step();
+				}
+			}
+		}
 			break;
 		case Scenario::Stage4:
+		{
+			static int start = getElapsedSec();
+			if (getElapsedSec() - start < 3)
+			{
+				if (IsEverySeconds(ev3))
+				{
+					m_controller->step();
+				}
+			}
+			else
+			{
+				if (IsEverySeconds(ev4))
+				{
+					m_controller->step();
+				}
+			}
+		}
 			break;
 		case Scenario::Stage5:
 			break;
@@ -96,29 +154,36 @@ public:
 			break;
 		case Scenario::Stage1:
 		{
-			if (getElapsedSec() > 15)
-			//if (getElapsedSec() > 1)
+			if (getElapsedSec() > t1)
 			{
 				m_state = Stage2;
-				m_context->setZoomRate(20.0);
-				m_context->setPaddingL(5600);
-				m_context->setPaddingT(3200);
-			}
-		}
-			break;
-		case Scenario::Stage2:
-		{
-			if (getElapsedSec() > 45)
-			//if (getElapsedSec() > 1.5)
-			{
-				m_state = Stage3;
 				m_context->setZoomRate(15.0);
 				m_context->setPaddingL(4000);
 				m_context->setPaddingT(2300);
 			}
 		}
 			break;
+		case Scenario::Stage2:
+		{
+			if (getElapsedSec() > t2)
+			{
+				m_state = Stage3;
+				m_context->setZoomRate(7.5);
+				m_context->setPaddingL(1600);
+				m_context->setPaddingT(950);
+			}
+		}
+			break;
 		case Scenario::Stage3:
+		{
+			if (getElapsedSec() > t3)
+			{
+				m_state = Stage4;
+				m_context->setZoomRate(5.0);
+				m_context->setPaddingL(780);
+				m_context->setPaddingT(490);
+			}
+		}
 			break;
 		case Scenario::Stage4:
 			break;
@@ -154,6 +219,8 @@ private:
 	State m_state;
 	size_t time;
 };
+
+bool isStart = false;
 
 ofApp::~ofApp()
 {
@@ -197,7 +264,10 @@ const MouseButton MouseR = 2;
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	m_scenario->update();
+	if (isStart)
+	{
+		m_scenario->update();
+	}
 }
 
 //--------------------------------------------------------------
@@ -207,7 +277,8 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	m_game->step();
+	// m_game->step();
+	isStart = true;
 }
 
 //--------------------------------------------------------------
