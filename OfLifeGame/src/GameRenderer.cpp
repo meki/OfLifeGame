@@ -90,16 +90,17 @@ void GameRenderer::Render()
 			//     128 = light blue
 			//     196 = violet
 			//     255 = red
-			const int countMax = 255;
-			int effectiveCount = m_panel(pt).count - 50;
+			const int countMax = 60 * 3;
+			const int countMin = 60 * 5;
+			int effectiveCount = m_panel(pt).count - countMin;
 			if (effectiveCount < 0)
 			{
 				effectiveCount = 0;
 			}
 
-			if (effectiveCount > 200)
+			if (effectiveCount > countMax)
 			{
-				effectiveCount = 200;
+				effectiveCount = countMax;
 			}
 
 			int hueFrm = 255;

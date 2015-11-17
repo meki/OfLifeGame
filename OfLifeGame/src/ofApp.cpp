@@ -272,7 +272,15 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	m_renderer->Render();
+
+	if (isStart)
+	{
+		m_renderer->Render();
+	}
+	else
+	{
+		ofClear(ofColor::white);
+	}
 }
 
 //--------------------------------------------------------------
