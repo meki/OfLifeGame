@@ -26,6 +26,8 @@ public:
 
 	void addAcorn(int x, int y);
 
+	void addRPentomino(int x, int y);
+
 private:
 
 	Game(const Game&) = delete;

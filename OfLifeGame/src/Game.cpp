@@ -99,7 +99,10 @@ void Game::step()
 
 	++m_generation;
 
-	log_d("generation: %d, lives: %d\n", m_generation, liveCount);
+	if (m_generation % 50 == 0)
+	{
+		log_v("generation: %d, lives: %d\n", m_generation, liveCount);
+	}
 }
 
 void Game::toggleLife(int x, int y)
@@ -122,4 +125,13 @@ void Game::addAcorn(int x, int y)
 	addLife(x + 5, y + 3);
 	addLife(x + 6, y + 3);
 	addLife(x + 7, y + 3);
+}
+
+void Game::addRPentomino(int x, int y)
+{
+	addLife(x + 2, y + 1);
+	addLife(x + 3, y + 1);
+	addLife(x + 1, y + 2);
+	addLife(x + 2, y + 2);
+	addLife(x + 2, y + 3);
 }

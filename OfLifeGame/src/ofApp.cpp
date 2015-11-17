@@ -212,6 +212,17 @@ public:
 		return time / FRAME_RATE;
 	}
 
+	void Render()
+	{
+		m_renderer->Render();
+
+// 		if (IsEverySeconds(60.0 / 80.0))
+// 		{
+// 			m_renderer->Render();
+// 		}
+	}
+
+
 private:
 	GameController* m_controller;
 	GameRenderer* m_renderer;
@@ -242,7 +253,8 @@ void ofApp::setup(){
 	const int gridH = panelH * 90;
 
 	m_game = new Game(gridW, gridH);
-	m_game->addAcorn((gridW / 2) - 3, (gridH / 2) - 3);
+	//m_game->addAcorn((gridW / 2) - 3, (gridH / 2) - 3);
+	m_game->addRPentomino((gridW / 2) - 3, (gridH / 2) - 3);
 
 	m_context = new RenderContext(panelW, panelH, gridW, gridH, 1600, 900);
 
@@ -275,7 +287,8 @@ void ofApp::draw(){
 
 	if (isStart)
 	{
-		m_renderer->Render();
+		m_scenario->Render();
+		//m_renderer->Render();
 	}
 	else
 	{
